@@ -18,6 +18,14 @@ class DbHelper {
     box.add(value);
   }
 
+  Future<Map> fetch() async {
+    if (box.values.isEmpty) {
+      return Future.value({});
+    } else {
+      return Future.value(box.toMap());
+    }
+  }
+
   Future deleteData(
     int index,
   ) async {

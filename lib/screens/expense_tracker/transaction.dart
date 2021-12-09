@@ -1,3 +1,4 @@
+import 'package:fintech/db/db.dart';
 import 'package:fintech/screens/expense_tracker/expense_record.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -337,11 +338,20 @@ class _TransactionState extends State<Transaction> {
                     isTapped = value;
                   });
                 },
-                onTap: () {
-                  if (amount != null) {
-                    // DbHelper dbHelper = DbHelper();
-                    // dbHelper.addData(amount!, selectedDate, type, note);
-                    Navigator.of(context).pop();
+                onTap: () async {
+                  if (amount != null && note.isNotEmpty) {
+                    DbHelper dbHelper = DbHelper();
+                    dbHelper.addData(amount!, selectedDate, type, note);
+                    print(amount);
+                    print(selectedDate);
+                    print(type);
+                    print(note);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Expense(),
+                      ),
+                    );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
