@@ -1,4 +1,4 @@
-# fintech
+# Money Box
 
 A new Flutter project.
 
