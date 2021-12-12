@@ -1,4 +1,4 @@
-# Money Box
+# Expense Tracker
 
 A new Flutter project.
 
